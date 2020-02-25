@@ -1,0 +1,24 @@
+.home {
+    height: 100vh;
+    background-color: #eee;
+    border: 2px solid purple ;
+    display: flex;
+    flex-direction: row;
+
+    &__section {
+        width: 25%;
+    
+        &--1 {
+            flex: 1;
+            border: 2px solid green;
+        }
+        &--2 {
+            flex: 2;
+            border: 2px solid green;
+        }
+        &--3 {
+            flex: 1;
+            border: 2px solid green;
+        }
+    }
+}
