@@ -1,0 +1,11 @@
+.header {
+    height: 22rem;
+    @include testWireFrame;
+    display: flex;
+
+    &__title {
+        align-self: flex-end;
+        margin-left: 5rem;
+        letter-spacing: 1rem;
+    }
+}

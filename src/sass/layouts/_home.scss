@@ -4,21 +4,25 @@
     border: 2px solid purple ;
     display: flex;
     flex-direction: row;
+    font-family: 'Kreon';
+    font-weight: bolder;
+    font-size: 5rem;
 
     &__section {
         width: 25%;
-    
+        
+
         &--1 {
             flex: 1;
-            border: 2px solid green;
+            background-color: $color-grey-light;
         }
         &--2 {
-            flex: 2;
-            border: 2px solid green;
+            flex: 3;
+            
         }
-        &--3 {
-            flex: 1;
-            border: 2px solid green;
-        }
+        // &--3 {
+        //     flex: 1;
+        //     border: 2px solid green;
+        // }
     }
 }

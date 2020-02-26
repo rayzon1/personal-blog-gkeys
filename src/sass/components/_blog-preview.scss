@@ -1,0 +1,41 @@
+.blog-preview {
+    @include testWireFrame;
+    padding: 5.5rem;
+    height: 75vh;
+    width: 75%;
+
+    &__title {
+        font-family: 'Brawler';
+        font-size: 3rem;
+        letter-spacing: 2px;
+        margin-bottom: 1.5rem;
+
+        &--date {
+            font-size: 1.5rem;
+            margin-left: 2rem;
+            color: $color-grey-dark-2;
+        }
+    }
+
+    &__description {
+        font-family: 'Antic Slab';
+        font-size: 1.5rem;
+        color: $color-grey-dark-3;
+        letter-spacing: 2px;
+        margin-bottom: 5rem;
+        display: flex;
+        flex-direction: column;
+
+        &--right-arrow {
+            font-size: 3rem;
+            width: fit-content;
+            transition: all .3s;
+
+            &:hover {
+                transform: scale(1.2) translateX(1.5rem);
+                cursor: pointer;
+            }
+        }
+    }
+}
+

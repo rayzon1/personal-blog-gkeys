@@ -1,0 +1,90 @@
+.navigation {
+  height: 22rem;
+  @include testWireFrame;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 6rem;
+  justify-content: center;
+
+  &__title {
+      display: table;
+      letter-spacing: 1rem;
+      font-size: 3.5rem;
+      margin-top: .6rem;
+  }
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__button {
+    height: 7rem;
+    width: 7rem;
+    text-align: center;
+    margin-left: 2.5rem;
+    cursor: pointer;
+
+    @include respond(tab-port) {
+      top: 4rem;
+      right: 4rem;
+    }
+
+    @include respond(phone) {
+      top: 3rem;
+      right: 3rem;
+    }
+  }
+
+  // ICON
+  &__icon {
+    position: relative;
+    margin-top: 3.5rem;
+
+    &,
+    &::before,
+    &::after {
+      width: 6.5rem;
+      height: 6px;
+      background-color: $color-grey-dark-3;
+      display: inline-block;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all 0.2s;
+    }
+
+    &::before {
+      top: -1.5rem;
+    }
+    &::after {
+      top: 1.5rem;
+    }
+  }
+
+  &__button:hover &__icon::before {
+    top: -2rem;
+  }
+
+  &__button:hover &__icon::after {
+    top: 2rem;
+  }
+
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+  }
+
+  &__checkbox:checked + &__button &__icon::before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+
+  &__checkbox:checked + &__button &__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
+  }
+}

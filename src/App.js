@@ -4,6 +4,7 @@ import Home from "./containers/Home";
 // import { Counter } from './features/counter/Counter';
 
 // ROUTER RESIDES HERE
+// MAIN APP CONTAINER
 function App() {
   return (
     <BrowserRouter>
