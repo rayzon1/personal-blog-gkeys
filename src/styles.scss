@@ -1,6 +1,7 @@
 // ABSTRACTS
 @import "sass/mixins";
 @import "sass/variables";
+@import "sass/animations";
 
 // MAIN BASE 
 @import "sass/base";
@@ -12,3 +13,4 @@
 @import "sass/components/header";
 @import "sass/components/navigation";
 @import "sass/components/blog-preview";
+@import "sass/components/resource-list";

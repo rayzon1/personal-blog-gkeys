@@ -1,0 +1,17 @@
+.resource-list {
+    @include testWireFrame;
+    flex: 1;
+    padding: 5rem;
+
+    &__title {
+        font-size: 2.5rem;
+    }
+
+    &__list {
+        font-size: 1.5rem;
+
+        &--item {
+            list-style: none;
+        }
+    }
+}

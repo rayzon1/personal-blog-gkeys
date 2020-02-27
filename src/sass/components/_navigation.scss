@@ -8,10 +8,10 @@
   justify-content: center;
 
   &__title {
-      display: table;
-      letter-spacing: 1rem;
-      font-size: 3.5rem;
-      margin-top: .6rem;
+    display: table;
+    letter-spacing: 1rem;
+    font-size: 3.5rem;
+    margin-top: 0.6rem;
   }
 
   &__checkbox {
@@ -65,6 +65,38 @@
       top: 1.5rem;
     }
   }
+
+  // NAVIGATION LIST
+  // TODO: SELECT THIS WITH JAVASCRIPT THEN SHOW DISPLAY
+  &__list {
+    @include testWireFrame;
+    text-align: right;
+    visibility: hidden;
+    opacity: 0;
+    line-height: 13rem;
+    font-size: 2.5rem;
+    font-weight: 500;
+
+    &__ul {
+      list-style: none;
+      transform: translateX(-6rem);
+    
+      &--item-1 {
+        animation: moveInLeft 1s ease-out;
+      }
+      &--item-2 {
+        animation: moveInLeft 1s ease-out 0.1s;
+      }
+      &--item-3 {
+        animation: moveInLeft 1s ease-out 0.2s;
+      }
+      &--item-4 {
+        animation: moveInLeft 1s ease-out 0.3s;
+      }
+    }
+  }
+
+
 
   &__button:hover &__icon::before {
     top: -2rem;
