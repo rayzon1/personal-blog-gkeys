@@ -1,18 +1,3 @@
-// not used, starter mixin
-@mixin clearfix {
-  &::after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
-
-@mixin cardpop($bg-color, $text-color) {
-  transform: scale(1.3) rotate(5deg);
-  background-color: rgba($bg-color, 0.8);
-  color: $text-color;
-  box-shadow: -4px 1rem 2rem 5px $color-black;
-}
 
 @mixin centerfix {
   position: absolute;
@@ -25,15 +10,6 @@
   box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
 }
 
-@mixin highlightBar {
-  width: 25rem;
-  height: 1rem;
-  top: 6.5rem;
-  left: -2rem;
-  border-radius: 2rem;
-  background-color: rgba($color-primary-orange-1, 0.6);
-  position: absolute;
-}
 
 @mixin testWireFrame {
   border: 1px solid purple;

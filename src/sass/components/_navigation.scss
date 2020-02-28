@@ -71,8 +71,6 @@
   &__list {
     @include testWireFrame;
     text-align: right;
-    visibility: hidden;
-    opacity: 0;
     line-height: 13rem;
     font-size: 2.5rem;
     font-weight: 500;
@@ -80,9 +78,11 @@
     &__ul {
       list-style: none;
       transform: translateX(-6rem);
+      // visibility: hidden;
+      // opacity: 0;
     
       &--item-1 {
-        animation: moveInLeft 1s ease-out;
+        animation: moveInLeft 1s ease-out;  
       }
       &--item-2 {
         animation: moveInLeft 1s ease-out 0.1s;
@@ -94,6 +94,7 @@
         animation: moveInLeft 1s ease-out 0.3s;
       }
     }
+
   }
 
 
