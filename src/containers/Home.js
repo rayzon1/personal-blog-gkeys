@@ -3,11 +3,13 @@ import Header from "../components/Header";
 import Navigation from "../components/Navigation";
 import NavigationList from "../components/NavigationList";
 import BlogPreview from "../components/BlogPreview";
+import BlogMain from "../components/BlogMain";
 import ResourceList from "../components/ResourceList";
 import { CSSTransition } from "react-transition-group";
 
 export default function Home() {
   const [isChecked, setIsChecked] = useState(false);
+  const [openBlog, setOpenBlog] = useState(null);
 
   //TODO: Create useState true/false to open or close nav
 
@@ -27,7 +29,11 @@ export default function Home() {
       <div className="home__section--2">
         <Header />
         <div style={{ display: "flex" }}>
-          <BlogPreview />
+
+          {
+            openBlog ? <BlogMain /> : <BlogPreview />
+          }
+
           <ResourceList />
         </div>
       </div>

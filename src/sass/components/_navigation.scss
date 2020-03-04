@@ -72,6 +72,7 @@
     @include testWireFrame;
     display: flex;
     flex-direction: column;
+    margin-top: 2rem;
     align-items: flex-end;
     line-height: 13rem;
     font-size: 2.5rem;
@@ -82,11 +83,20 @@
       list-style: none;
       transform: translateX(-7rem);
       
-      &--item-1,
-      &--item-2,
-      &--item-3,
-      &--item-4 {
+      &--item-1 {
         animation: moveInLeft 1s ease-out;  
+        @include textHoverAnimation;
+      }
+      &--item-2 {
+        animation: moveInLeft 1s ease-out .2s;  
+        @include textHoverAnimation;
+      }
+      &--item-3{
+        animation: moveInLeft 1s ease-out .3s;  
+        @include textHoverAnimation;
+      }
+      &--item-4 {
+        animation: moveInLeft 1s ease-out .4s;  
         @include textHoverAnimation;
       }
     

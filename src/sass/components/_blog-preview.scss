@@ -3,7 +3,7 @@
     padding: 5.5rem;
     height: 75vh;
     width: 75%;
-    // flex-grow: 1;
+    flex: 3;
 
     &__title {
         font-family: 'Brawler';
@@ -30,6 +30,7 @@
         &--right-arrow {
             font-size: 3rem;
             transition: all 1s;
+            width: 50%;
 
             &:hover {
                 animation: moveInLeft 1.2s ease-out;
