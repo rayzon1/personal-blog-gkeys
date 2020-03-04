@@ -70,33 +70,29 @@
   // TODO: SELECT THIS WITH JAVASCRIPT THEN SHOW DISPLAY
   &__list {
     @include testWireFrame;
-    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     line-height: 13rem;
     font-size: 2.5rem;
     font-weight: 500;
+    
 
     &__ul {
       list-style: none;
-      transform: translateX(-6rem);
-      // visibility: hidden;
-      // opacity: 0;
-    
-      &--item-1 {
-        animation: moveInLeft 1s ease-out;  
-      }
-      &--item-2 {
-        animation: moveInLeft 1s ease-out 0.1s;
-      }
-      &--item-3 {
-        animation: moveInLeft 1s ease-out 0.2s;
-      }
+      transform: translateX(-7rem);
+      
+      &--item-1,
+      &--item-2,
+      &--item-3,
       &--item-4 {
-        animation: moveInLeft 1s ease-out 0.3s;
+        animation: moveInLeft 1s ease-out;  
+        @include textHoverAnimation;
       }
+    
     }
 
   }
-
 
 
   &__button:hover &__icon::before {

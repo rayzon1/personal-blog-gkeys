@@ -15,6 +15,15 @@
   border: 1px solid purple;
 }
 
+@mixin textHoverAnimation {
+  transition: all .3s;
+  cursor: pointer;
+  &:hover{
+    transform: scale(1.4);
+    color: slateblue;
+  }
+}
+
 // MEDIA QUERY MANAGER
 
 /*

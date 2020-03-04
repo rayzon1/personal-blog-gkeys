@@ -13,3 +13,22 @@
     transform: translate(0);
   }
 }
+
+// CSS TRANSITION ANIMATIONS
+.nav-enter {
+  opacity: 0;
+  transform: scale(.8);
+}
+.nav-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.nav-exit {
+  opacity: 1;
+}
+.nav-exit-active {
+  opacity: 0;
+  transform: scale(.8);
+  transition: opacity 300ms, transform 300ms;
+}
