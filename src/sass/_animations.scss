@@ -14,7 +14,7 @@
   }
 }
 
-// CSS TRANSITION ANIMATIONS
+// NAV ANIMATIONS - CSS TRANSITIONS
 .nav-enter {
   opacity: 0;
   transform: scale(.8);
@@ -32,3 +32,5 @@
   transform: scale(.8);
   transition: opacity 300ms, transform 300ms;
 }
+
+// BLOG ANIMATIONS - CSS TRANSITIONS

@@ -9,7 +9,7 @@ import { CSSTransition } from "react-transition-group";
 
 export default function Home() {
   const [isChecked, setIsChecked] = useState(false);
-  const [openBlog, setOpenBlog] = useState(null);
+  const [openBlog, setOpenBlog] = useState(false);
 
   //TODO: Create useState true/false to open or close nav
 
@@ -29,10 +29,7 @@ export default function Home() {
       <div className="home__section--2">
         <Header />
         <div style={{ display: "flex" }}>
-
-          {
-            openBlog ? <BlogMain /> : <BlogPreview />
-          }
+          {openBlog ? <BlogMain /> : <BlogPreview setOpenBlog={setOpenBlog} />}
 
           <ResourceList />
         </div>
