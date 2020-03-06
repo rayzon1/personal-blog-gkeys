@@ -30,17 +30,18 @@ export default function Home() {
         <Header />
         <div style={{ display: "flex" }}>
           {
-            openBlog
-              ? <CSSTransition
-                  in={openBlog}
-                  timeout={500}
-                  classNames="blog"
-                  unmountOnExit
-                >
-                  <BlogMain />
-                </CSSTransition>
-              : <BlogPreview setOpenBlog={setOpenBlog} />
+            !openBlog && <BlogPreview setOpenBlog={setOpenBlog} />
           }
+
+          <CSSTransition
+            in={openBlog}
+            timeout={1000}
+            classNames="blog"
+            unmountOnExit
+          >
+            <BlogMain />
+          </CSSTransition>
+
           <ResourceList />
         </div>
       </div>
