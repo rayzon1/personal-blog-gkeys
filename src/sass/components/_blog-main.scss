@@ -1,7 +1,12 @@
 .blog-main {
-    // @include testWireFrame;
-    height: 75vh;
-    width: 75%;
-    padding: 5.5rem;
-    flex: 3;
+//   @include testWireFrame;
+  height: fit-content;
+
+  &__title {
+    font-family: "Brawler";
+    font-size: 3rem;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+  }
 }

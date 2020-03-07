@@ -34,21 +34,43 @@
 }
 
 // BLOG ANIMATIONS - CSS TRANSITIONS
+
+// BLOG PREVIEW
 .blog-enter {
   opacity: 0;
-  transform: scale(.6);
-  transform: translateX(-8rem);
+  transform: translateX(5rem);
 }
 .blog-enter-active {
   opacity: 1;
   transform: translateX(0);
-  transition: opacity 1000ms, transform 1000ms ;
+  transition: opacity 300s, transform 300s;
 }
 .blog-exit {
   opacity: 1;
+  transform: translateX(0);
 }
 .blog-exit-active {
   opacity: 0;
-  transform: scale(.8);
+  transform: translateX(-5rem);
+  transition: opacity 300ms, transform 300ms;
+}
+
+// BLOG MAIN
+.blogm-enter {
+  opacity: 0;
+  transform: translateX(-5rem);
+}
+.blogm-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300s, transform 300s;
+}
+.blogm-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+.blogm-exit-active {
+  opacity: 0;
+  transform: translateX(5rem);
   transition: opacity 300ms, transform 300ms;
 }

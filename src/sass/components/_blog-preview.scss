@@ -1,9 +1,14 @@
 .blog-preview {
-    @include testWireFrame;
+    // @include testWireFrame;
     padding: 5.5rem;
     height: 75vh;
     width: 75%;
+    display: flex;
     flex: 3;
+
+    &__container {
+        height: fit-content;
+    }
 
     &__title {
         font-family: 'Brawler';
