@@ -35,15 +35,13 @@
 
 // BLOG ANIMATIONS - CSS TRANSITIONS
 
-// BLOG PREVIEW
+// BLOG PREVIEW ENTER/EXIT
 .blog-enter {
   opacity: 0;
-  transform: translateX(5rem);
 }
 .blog-enter-active {
   opacity: 1;
-  transform: translateX(0);
-  transition: opacity 300s, transform 300s;
+  transition: opacity 300ms, transform 300ms;
 }
 .blog-exit {
   opacity: 1;
@@ -55,15 +53,13 @@
   transition: opacity 300ms, transform 300ms;
 }
 
-// BLOG MAIN
+// BLOG MAIN ENTER/EXIT
 .blogm-enter {
   opacity: 0;
-  transform: translateX(-5rem);
 }
 .blogm-enter-active {
   opacity: 1;
-  transform: translateX(0);
-  transition: opacity 300s, transform 300s;
+  transition: opacity 300ms, transform 300ms;
 }
 .blogm-exit {
   opacity: 1;
@@ -73,4 +69,39 @@
   opacity: 0;
   transform: translateX(5rem);
   transition: opacity 300ms, transform 300ms;
+}
+
+
+// ANIMATE CSS
+@-webkit-keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
 }

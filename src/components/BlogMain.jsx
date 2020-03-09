@@ -3,6 +3,7 @@ import { CSSTransition } from "react-transition-group";
 
 export default function BlogMain() {
   const [openBlog, setOpenBlog] = useState(false);
+  const [openBlogPreview, setOpenBlogPreview] = useState(true);
 
   const BlogContentMain = () => {
     return (
@@ -18,7 +19,7 @@ export default function BlogMain() {
 
   const BlogPreviewMain = () => {
     return (
-      <div className="blog-preview__container">
+      <div className="blog-preview__container fadeInLeft">
         <p className="blog-preview__title">
           This is a blog title{" "}
           <span className="blog-preview__title--date">10.11.1986</span>
@@ -30,7 +31,7 @@ export default function BlogMain() {
           luctus, dolor ante sodales magna, ut aliquet est felis mattis nunc...
           <span
             className="blog-preview__description--right-arrow"
-            onClick={() => setOpenBlog(true)}
+            onClick={() => setOpenBlogPreview(false)}
           >
             &rarr;
           </span>
@@ -39,14 +40,13 @@ export default function BlogMain() {
     );
   };
 
-
-  //TODO: CREATE A STATE FOR EACH COMPONENT TO CREATE A SMOOTHER TRANSITION
   return (
     <div className="blog-preview">
       <CSSTransition
-        in={!openBlog}
+        in={openBlogPreview}
         timeout={300}
         classNames="blog"
+        onExited={() => setOpenBlog(true)}
         unmountOnExit
       >
         <BlogPreviewMain />
@@ -56,6 +56,7 @@ export default function BlogMain() {
         in={openBlog}
         timeout={300}
         classNames="blogm"
+        onExited={() => setOpenBlogPreview(true)}
         unmountOnExit
       >
         <BlogContentMain />

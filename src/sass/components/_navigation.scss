@@ -81,7 +81,10 @@
 
     &__ul {
       list-style: none;
+      width: 10vw;
       transform: translateX(-7rem);
+      text-align: center;
+      margin-right: 2rem;
       
       &--item-1 {
         animation: moveInLeft 1s ease-out;  
