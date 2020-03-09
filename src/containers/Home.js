@@ -7,9 +7,8 @@ import ResourceList from "../components/ResourceList";
 import { CSSTransition } from "react-transition-group";
 
 export default function Home() {
+  // State determines whether navigation list will show or not
   const [isChecked, setIsChecked] = useState(false);
-
-  //TODO: Create useState true/false to open or close nav
 
   return (
     <div className="home">
@@ -27,9 +26,7 @@ export default function Home() {
       <div className="home__section--2">
         <Header />
         <div style={{ display: "flex", overflow: "hidden" }}>
-
           <BlogMain />
-
           <ResourceList />
         </div>
       </div>
