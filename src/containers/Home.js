@@ -10,6 +10,11 @@ export default function Home() {
   // State determines whether navigation list will show or not
   const [isChecked, setIsChecked] = useState(false);
 
+  // const connection = str => `${process.env.REACT_APP_API_CONNECTION}${str}`
+
+  // const {response, error, isLoading} = useFetch(connection("api/posts"), {method: "get"});
+  // console.log(response);
+
   return (
     <div className="home">
       <div className="home__section--1">
@@ -26,7 +31,7 @@ export default function Home() {
       <div className="home__section--2">
         <Header />
         <div style={{ display: "flex", overflow: "hidden" }}>
-          <BlogMain />
+          <BlogMain/>
           <ResourceList />
         </div>
       </div>

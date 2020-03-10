@@ -1,37 +1,49 @@
 import React, { useState } from "react";
 import { CSSTransition } from "react-transition-group";
+import { useFetch } from "../hooks/useFetch";
 
 export default function BlogMain() {
   const [openBlog, setOpenBlog] = useState(false);
-  const [openBlogPreview, setOpenBlogPreview] = useState(true);
+  const [openBlogPreview, setOpenBlogPreview] = useState({
+    open: true,
+    id: null
+  });
 
-  const BlogContentMain = () => {
+  // DB POST GET ALL COURSES
+  const connection = str => `${process.env.REACT_APP_API_CONNECTION}${str}`;
+  const { response, error, isLoading } = useFetch(connection("api/posts"), {
+    method: "get"
+  });
+
+  // MAIN BLOG CONTENT
+  const BlogContentMain = ({ data }) => {
     return (
       <div className="blog-main">
-        <h1 className="blog-main__title">Blog Main</h1>
+        <h1 className="blog-main__title">{data.title}</h1>
         <span
           className="blog-preview__description--right-arrow"
           onClick={() => setOpenBlog(false)}
-        >&larr;</span>
+        >
+          &larr;
+        </span>
       </div>
     );
   };
 
-  const BlogPreviewMain = () => {
+  // MAIN BLOG PREVIEW
+  const BlogPreviewMain = ({ data }) => {
     return (
+      
       <div className="blog-preview__container fadeInLeft">
         <p className="blog-preview__title">
-          This is a blog title{" "}
+          {data.title}
           <span className="blog-preview__title--date">10.11.1986</span>
         </p>
         <p className="blog-preview__description">
-          Morbi elementum faucibus nunc eget mollis. Etiam quis purus ac ligula
-          porta condimentum. Proin nunc dui, varius at accumsan id, lobortis sed
-          eros. Maecenas in semper urna. Nunc venenatis, metus at faucibus
-          luctus, dolor ante sodales magna, ut aliquet est felis mattis nunc...
+          {data.description}
           <span
             className="blog-preview__description--right-arrow"
-            onClick={() => setOpenBlogPreview(false)}
+            onClick={() => setOpenBlogPreview({ open: false, id: data._id })}
           >
             &rarr;
           </span>
@@ -42,25 +54,36 @@ export default function BlogMain() {
 
   return (
     <div className="blog-preview">
-      <CSSTransition
-        in={openBlogPreview}
-        timeout={300}
-        classNames="blog"
-        onExited={() => setOpenBlog(true)}
-        unmountOnExit
-      >
-        <BlogPreviewMain />
-      </CSSTransition>
+      {error ? (
+        <p>{`Error ${error}`}</p>
+      ) : isLoading ? (
+        <p>...Loading</p>
+      ) : (
+        response &&
+        response.map(data => (
+          <>
+            <CSSTransition
+              in={openBlogPreview.open}
+              timeout={300}
+              classNames="blog"
+              onExited={() => setOpenBlog(true)}
+              unmountOnExit
+            >
+              <BlogPreviewMain data={data} />
+            </CSSTransition>
 
-      <CSSTransition
-        in={openBlog}
-        timeout={300}
-        classNames="blogm"
-        onExited={() => setOpenBlogPreview(true)}
-        unmountOnExit
-      >
-        <BlogContentMain />
-      </CSSTransition>
+            <CSSTransition
+              in={openBlog && data._id === openBlogPreview.id}
+              timeout={300}
+              classNames="blogm"
+              onExited={() => setOpenBlogPreview({ open: true, index: null })}
+              unmountOnExit
+            >
+              <BlogContentMain data={data} />
+            </CSSTransition>
+          </>
+        ))
+      )}
     </div>
   );
 }
