@@ -19,7 +19,7 @@ export const useFetch = (url, options) => {
             setError(error.response);
           }
         }, 
-        [url, options]
+        []
     )
 
     useEffect(() => {
