@@ -25,6 +25,11 @@
   }
 }
 
+@mixin linkReset {
+  text-decoration: none;
+  color: currentColor;
+}
+
 // MEDIA QUERY MANAGER
 
 /*

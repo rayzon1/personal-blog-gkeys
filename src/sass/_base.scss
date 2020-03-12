@@ -39,3 +39,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.links {
+  @include linkReset;
+}
+

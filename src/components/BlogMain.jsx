@@ -48,7 +48,7 @@ export default function BlogMain() {
   // MAIN BLOG PREVIEW
   const BlogPreviewMain = ({ data }) => {
     return (
-      <div className="blog-preview__container fadeInLeft">
+      <div className="blog-preview__container">
         <p className="blog-preview__title">
           {data.title}
           <span className="blog-preview__title--date">10.11.1986</span>

@@ -1,0 +1,21 @@
+.button {
+    width: 100%;
+    height: 3.5rem;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: .4rem;
+    background-color: $color-teal-light-1;
+    color: $color-grey-dark-3;
+    font-weight: 500;
+    transition: all .4s;
+    @include subtleBoxShadow;
+
+    &:hover {
+        background-color: rgba($color-teal-light-1, .7);
+        color: $color-grey-dark-2;
+    }
+    &:active {
+        box-shadow: none;
+    }
+}
