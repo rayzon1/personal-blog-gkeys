@@ -20,7 +20,7 @@ function App() {
             </div>
             <div className="home__section--2">
               <Header />
-              <div style={{ display: "flex", overflow: "hidden" }}>
+              <div className="home__section--3">
                 <Route exact path="/" render={() => <BlogMain />} />
                 <Route exact path="/signin" render={() => <AdminSignIn />} /> 
                 <ResourceList />

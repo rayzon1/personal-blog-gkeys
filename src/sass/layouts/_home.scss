@@ -8,6 +8,10 @@
     font-weight: bolder;
     font-size: 5rem;
 
+    @include respond(tab-land) {
+        flex-direction: column;
+    }
+
     &__section {
         width: 25%;
         
@@ -20,9 +24,13 @@
             flex: 3;
             
         }
-        // &--3 {
-        //     flex: 1;
-        //     border: 2px solid green;
-        // }
+        &--3 {
+            display: flex; 
+            overflow: hidden;
+
+            @include respond(tab-land) {
+                flex-direction: column;    
+            }
+        }
     }
 }

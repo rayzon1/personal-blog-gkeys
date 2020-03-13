@@ -11,10 +11,6 @@
     transition: all .4s;
     @include subtleBoxShadow;
 
-    &:hover {
-        background-color: rgba($color-teal-light-1, .7);
-        color: $color-grey-dark-2;
-    }
     &:active {
         box-shadow: none;
     }
