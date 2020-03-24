@@ -103,6 +103,11 @@
       &--item-4 {
         animation: moveInLeft 1s ease-out .4s;  
         @include textHoverAnimation;
+
+        &__disabled {
+          animation: moveInLeft 1s ease-out .4s;
+          color: grey;
+        }
       }
     
     }

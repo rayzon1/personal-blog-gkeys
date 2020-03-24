@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
+import Cookies from "js-cookie";
 
 export const slice = createSlice({
   name: 'signin',
   initialState: {
     username: "",
-    password: ""
+    password: "",
+    signedIn: false,
   },
   reducers: {
     setUser: (state, action) => {
@@ -15,7 +17,13 @@ export const slice = createSlice({
       state.username = action.payload.user;
     },
     setPw: (state, action) => {
-      state.password = action.payload.pass
+      state.password = action.payload.pass;
+    },
+    setSignIn: state => {
+      state.signedIn = true;
+    },
+    clearSignIn: state => {
+      state.signedIn = false;
     },
     // incrementByAmount: (state, action) => {
     //   state.value += action.payload.amount;
@@ -23,7 +31,7 @@ export const slice = createSlice({
   },
 });
 
-export const selectCount = state => state.counter.value;
-export const { setUser, setPw } = slice.actions;
+export const signedInState = state => state.signin.signedIn;
+export const { setUser, setPw, setSignIn, clearSignIn } = slice.actions;
 
 export default slice.reducer;

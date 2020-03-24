@@ -10,7 +10,7 @@ export default function Navigation({ setIsChecked }) {
         id="navi-toggle"
       />
       <label
-        for="navi-toggle"
+        htmlFor="navi-toggle"
         className="navigation__button"
         onClick={() => setIsChecked(prev => !prev)}
       >

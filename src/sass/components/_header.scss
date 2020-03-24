@@ -1,20 +1,44 @@
 .header {
-    height: 22rem;
-    @include testWireFrame;
-    padding: 1.5rem;
+  height: 22rem;
+  @include testWireFrame;
+  padding: 1.5rem;
+  display: flex;
+
+  &__title {
+    align-self: flex-end;
+    margin-left: 5rem;
+    letter-spacing: 1rem;
+  }
+
+  &__sub-header {
     display: flex;
+    height: fit-content;
+    margin-bottom: 3rem;
+    flex-direction: column;
+    align-self: flex-end;
 
-    &__title {
-        align-self: flex-end;
-        margin-left: 5rem;
-        letter-spacing: 1rem;
+    &--admin {
+      font-size: 1.2rem;
+      align-self: flex-end;
+      margin-bottom: 1.2rem;
+    }
 
-        &--sub {
-            font-size: 1.2rem;
-            letter-spacing: .5rem;
-            color: $color-grey-dark-1;
-            font-style: italic;
-            margin-left: 2rem;
+    &--subtitle {
+        font-size: 1.2rem;
+        letter-spacing: 0.5rem;
+        color: $color-grey-dark-1;
+        font-style: italic;
+        margin-left: 2rem;
+      }
+
+    &--sign-out {
+        color: rgba($color-grey-dark-3, .75);
+        cursor: pointer;
+        transition: color .3s;
+
+        &:hover {
+            color: $color-red-light-1;
         }
     }
+  }
 }

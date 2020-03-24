@@ -74,8 +74,8 @@ export default function BlogMain() {
         <p>...Loading</p>
       ) : (
         response &&
-        response.map(data => (
-          <>
+        response.map((data, index) => (
+          <div key={index}>
             <CSSTransition
               in={openBlogPreview.open}
               timeout={300}
@@ -95,7 +95,7 @@ export default function BlogMain() {
             >
               <BlogContentMain data={data} />
             </CSSTransition>
-          </>
+          </div>
         ))
       )}
     </div>
