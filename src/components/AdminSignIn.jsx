@@ -11,14 +11,18 @@ function AdminSignIn({ history }) {
   // On change type state for sing-in inputs
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, isLoading] = useState(false);
+  const [loading, setIsLoading] = useState(false);
+  const [failedSignIn, setFailedSignIn] = useState(false);
+
   const connection = str => `${process.env.REACT_APP_API_CONNECTION}${str}`;
   // const isSignedIn = useSelector(signedInState);
   const dispatch = useDispatch();
 
-  // SIGN-IN SUBMISSION
+  // SIGN-IN SUBMISSION - Cookie sets admin object to true.
+  // Admin object is used by other components to detect sign in.
   const submitSignIn = async e => {
     e.preventDefault();
+    setFailedSignIn(false);
 
     const headerObject = {
       method: "get",
@@ -29,10 +33,10 @@ function AdminSignIn({ history }) {
     };
 
     try {
-      isLoading(true);
+      setIsLoading(true);
       const response = await Axios(connection("api/users"), headerObject);
       if (response.status === 200) {
-        isLoading(false);
+        setIsLoading(false);
         dispatch(setSignIn());
         Cookies.set("authenticatedUser", JSON.stringify({ admin: true }), {
           expires: 5
@@ -41,12 +45,11 @@ function AdminSignIn({ history }) {
       } 
    
     } catch (error) {
-      if(error.response.status === 401) {
-        //TODO: CREATE REDUX STATE TO NOTATE DENIED ENTRY FOR OTHER COMPONENENTS
-
+      if(error.response.status) {
+        setFailedSignIn(true);
         console.log('Access Denied');
       }
-      isLoading(false);
+      setIsLoading(false);
     }
     
 
@@ -77,8 +80,9 @@ function AdminSignIn({ history }) {
           <button type="submit" className="button">
             Submit
           </button>
-          {loading && <p>...loading</p>}
         </form>
+        {loading && <p>...loading</p>}
+        {failedSignIn && <p>Access Denied</p>}
       </div>
     </Fade>
   );

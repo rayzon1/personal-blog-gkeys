@@ -1,6 +1,8 @@
 .blog-main {
 //   @include testWireFrame;
   // height: fit-content;
+  display: flex;
+  flex-direction: column;
 
   &__title {
     font-family: "Brawler";
