@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { signedInState, clearSignIn } from "../redux/signinSlice";
 import Cookies from "js-cookie";
+import { withRouter } from "react-router";
 
-export default function Header() {
+function Header({ history }) {
   const signedIn = useSelector(signedInState);
   const dispatch = useDispatch();
 
   const signOut = () => {
     Cookies.remove("authenticatedUser");
     dispatch(clearSignIn());
+    history.push('/');
   }
  
 
@@ -30,3 +32,5 @@ export default function Header() {
     </div>
   );
 }
+
+export default withRouter(Header);

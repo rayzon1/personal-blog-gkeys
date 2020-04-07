@@ -27,14 +27,20 @@ export default function BlogMain() {
 
   // MAIN BLOG CONTENT
   const BlogContentMain = ({ data }) => {
+
     return (
       <div className="blog-main">
         <h1 className="blog-main__title">{data.title}</h1>
+       
         {data.code && (
           <Highlight language={"javascript"} className="blog-main__code">
             {data.code}
           </Highlight>
         )}
+
+        {data.description}
+        
+        
         <span
           className="blog-preview__description--right-arrow"
           onClick={() => setOpenBlog(false)}

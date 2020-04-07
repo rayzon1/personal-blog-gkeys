@@ -1,0 +1,57 @@
+.blog-post {
+  height: 100%;
+  width: 75%;
+  padding: 5.5rem;
+
+  @include respond(tab-land) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: "Brawler";
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 2.5rem;
+  }
+
+  &__form {
+
+    width: 100%;
+    
+    &__section {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+
+      &--label {
+        margin-top: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        color: $color-grey-dark-1;
+      }
+
+      &--title {
+        height: 4rem;
+        width: 50%;
+        @include defaultInputSize;
+      }
+
+      &--date {
+        height: 4rem;
+        width: 50%;
+        @include defaultInputSize;
+      }
+
+      &--summary {
+        height: 45vh;
+        @include defaultInputSize;
+      }
+    }
+  }
+}

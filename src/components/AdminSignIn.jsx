@@ -1,22 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, createRef, useEffect } from "react";
 import Axios from "axios";
 import Cookies from "js-cookie";
 import Fade from "react-reveal/Fade";
-import { signedInState, setSignIn, clearSignIn } from "../redux/signinSlice";
-import { useSelector, useDispatch } from 'react-redux';
+import { setSignIn } from "../redux/signinSlice";
+import { useDispatch } from "react-redux";
 import { withRouter } from "react-router";
 
-
 function AdminSignIn({ history }) {
-  // On change type state for sing-in inputs
+  // On change type state for user inputs
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setIsLoading] = useState(false);
   const [failedSignIn, setFailedSignIn] = useState(false);
 
+  // Refs for user inputs
+  const userInput = createRef();
+  const passInput = createRef();
+
   const connection = str => `${process.env.REACT_APP_API_CONNECTION}${str}`;
-  // const isSignedIn = useSelector(signedInState);
   const dispatch = useDispatch();
+
+  // Side-effect will clear input fields upon denied access
+  useEffect(() => {
+    const clearFields = () => {
+      userInput.current.value = "";
+      passInput.current.value = "";
+      userInput.current.focus();
+    };
+    if (failedSignIn) {
+      clearFields();
+    }
+    return () => {
+      console.log("unmounted");
+    };
+  }, [failedSignIn]);
 
   // SIGN-IN SUBMISSION - Cookie sets admin object to true.
   // Admin object is used by other components to detect sign in.
@@ -41,21 +58,29 @@ function AdminSignIn({ history }) {
         Cookies.set("authenticatedUser", JSON.stringify({ admin: true }), {
           expires: 5
         });
-        history.push('/');
-      } 
-   
+        history.go(-1);
+      }
     } catch (error) {
-      if(error.response.status) {
+      if (error.response.status) {
         setFailedSignIn(true);
-        console.log('Access Denied');
+        console.log("Access Denied");
       }
       setIsLoading(false);
     }
-    
-
   };
 
-  const InputField = (name, type, fn) => (
+  // FAILED SIGN-IN COMPONENT - This will display a tooltip with error for failed sign-in.
+  const FailedSignIn = () => {
+    return (
+      <div className="failedSignIn">
+        <p className="failedSignIn__primary-message">Access Denied</p>
+        <p className="failedSignIn__secondary-message">Please try again</p>
+      </div>
+    )
+  } 
+
+  // INPUT FIELD COMPONENT - Input function component will create needed input fields.
+  const InputField = (name, type, fn, ref) => (
     <div className="input">
       <input
         type={type}
@@ -63,6 +88,7 @@ function AdminSignIn({ history }) {
         name={name}
         id={name}
         onChange={e => fn(e.target.value)}
+        ref={ref}
       />
       <label htmlFor={name} className="input__textfield--label">
         {name}
@@ -75,14 +101,14 @@ function AdminSignIn({ history }) {
       <div className="admin">
         <p className="admin__title">ADMIN</p>
         <form onSubmit={e => submitSignIn(e)}>
-          {InputField("username", "text", setUserName)}
-          {InputField("password", "password", setPassword)}
+          {InputField("username", "text", setUserName, userInput)}
+          {InputField("password", "password", setPassword, passInput)}
           <button type="submit" className="button">
             Submit
           </button>
         </form>
         {loading && <p>...loading</p>}
-        {failedSignIn && <p>Access Denied</p>}
+        {failedSignIn && <FailedSignIn />}
       </div>
     </Fade>
   );

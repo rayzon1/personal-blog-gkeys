@@ -4,19 +4,21 @@ import Home from "./containers/Home";
 import Header from "./components/Header";
 import ResourceList from "./components/ResourceList";
 import BlogMain from "./components/BlogMain";
+import BlogPostForm from "./components/BlogPostForm";
 import AdminSignIn from "./components/AdminSignIn";
-import { signedInState, setSignIn, clearSignIn } from "./redux/signinSlice";
-import { useSelector, useDispatch } from 'react-redux';
+import { setSignIn } from "./redux/signinSlice";
+import { useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
+import PrivateRoute from './PrivateRoute';
 // import { Counter } from './features/counter/Counter';
 
 // ROUTER RESIDES HERE
 // MAIN APP CONTAINER
 function App() {
   const dispatch = useDispatch();
-  const cookieState = Cookies.getJSON("authenticatedUser");
 
   useEffect(() => {
+    const cookieState = Cookies.getJSON("authenticatedUser");
     if(cookieState) {
       return dispatch(setSignIn());
     }
@@ -35,6 +37,7 @@ function App() {
               <div className="home__section--3">
                 <Route exact path="/" render={() => <BlogMain />} />
                 <Route exact path="/signin" render={() => <AdminSignIn />} /> 
+                <PrivateRoute exact path="/blogpost" component={BlogPostForm} /> 
                 <ResourceList />
               </div>
             </div>

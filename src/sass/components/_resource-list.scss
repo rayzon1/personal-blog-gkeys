@@ -1,7 +1,11 @@
 .resource-list {
-    @include testWireFrame;
+    // @include testWireFrame;
     flex: 1;
     padding: 5rem;
+
+    @include respond(tab-land) {
+        padding: 3rem;
+    }
 
     &__title {
         font-size: 2.5rem;

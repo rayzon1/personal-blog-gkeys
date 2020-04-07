@@ -1,12 +1,12 @@
 .home {
-    height: 100vh;
+    // height: 100vh;
     // background-color: #eee;
-    border: 2px solid purple ;
+    // border: 2px solid purple ;
     display: flex;
     flex-direction: row;
     font-family: 'Kreon';
     font-weight: bolder;
-    font-size: 5rem;
+    // font-size: 5rem;
 
     @include respond(tab-land) {
         flex-direction: column;
@@ -29,7 +29,8 @@
             overflow: hidden;
 
             @include respond(tab-land) {
-                flex-direction: column;    
+                flex-direction: column; 
+                min-height: 75vh;   
             }
         }
     }

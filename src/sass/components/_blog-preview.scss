@@ -7,6 +7,12 @@
     flex-direction: column;
     flex: 3;
 
+    @include respond(tab-port) {
+        height: auto;
+        width: auto;
+        padding: 3rem;
+    }
+
     &__container {
         flex: 0 0 100%;
         display: table;

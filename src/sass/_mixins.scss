@@ -1,4 +1,3 @@
-
 @mixin centerfix {
   position: absolute;
   top: 50%;
@@ -6,21 +5,26 @@
   transform: translate(-50%, -50%);
 }
 
+// Input windows default border radius and font sizes.
+@mixin defaultInputSize {
+  border-radius: 4px;
+  font-size: 1.4rem;
+}
+
 @mixin subtleBoxShadow {
   box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
 }
-
 
 @mixin testWireFrame {
   border: 1px solid purple;
 }
 
 @mixin textHoverAnimation {
-  transition: all .3s;
+  transition: all 0.3s;
   cursor: pointer;
-  &:hover{
+  &:hover {
     transform: scale(1.4);
-    letter-spacing: .5rem;
+    letter-spacing: 0.5rem;
     color: slateblue;
   }
 }

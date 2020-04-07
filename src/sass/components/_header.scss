@@ -1,6 +1,6 @@
 .header {
   height: 22rem;
-  @include testWireFrame;
+  // @include testWireFrame;
   padding: 1.5rem;
   display: flex;
 
@@ -14,10 +14,15 @@
     align-self: flex-end;
     margin-left: 5rem;
     letter-spacing: 1rem;
+    font-size: 6rem;
 
     @include respond(tab-land) {
       align-self: auto;
       margin-left: 0;
+    }
+
+    @include respond(phone) {
+      font-size: 5.5rem;
     }
   }
 
@@ -43,6 +48,7 @@
         letter-spacing: 0.5rem;
         color: $color-grey-dark-1;
         font-style: italic; 
+        margin-left: 3rem;
       }
 
     &--sign-out {
