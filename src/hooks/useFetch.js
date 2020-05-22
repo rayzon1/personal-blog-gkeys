@@ -11,8 +11,8 @@ export const useFetch = (url, options) => {
         async (url, opt) => {
             setIsLoading(true);
           try {
-            const course = await axios(url, {}, opt);
-            setResponse(course.data);
+            const res = await axios(url, {}, opt);
+            setResponse(res.data);
             setIsLoading(false);
           } catch (error) {
             console.log(error.response);

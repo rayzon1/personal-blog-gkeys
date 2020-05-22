@@ -10,6 +10,13 @@ export default function BlogPostForm() {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
 
+  // Submit post to server.
+  const submitPost = () => {
+    // Gather all state information
+    // Create post submission object/options
+    // useFetch hook
+  }
+
   // Input sections for blog post form.
   const blogPost = (type, name, label, state) => (
     <div className="blog-post__form__section">
