@@ -37,13 +37,7 @@
         color: $color-grey-dark-1;
       }
 
-      &--title {
-        height: 4rem;
-        width: 50%;
-        @include defaultInputSize;
-      }
-
-      &--date {
+      &--title, &--date   {
         height: 4rem;
         width: 50%;
         @include defaultInputSize;

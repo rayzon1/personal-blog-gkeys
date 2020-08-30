@@ -10,7 +10,6 @@ import { setSignIn } from "./redux/signinSlice";
 import { useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
 import PrivateRoute from './PrivateRoute';
-// import { Counter } from './features/counter/Counter';
 
 // ROUTER RESIDES HERE
 // MAIN APP CONTAINER
