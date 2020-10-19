@@ -106,23 +106,23 @@
       }
 
       &--item-1 {
-        animation: moveInLeft 1s ease-out;
+        // animation: moveInLeft 1s ease-out;
         @include textHoverAnimation;
       }
       &--item-2 {
-        animation: moveInLeft 1s ease-out 0.2s;
+        // animation: moveInLeft 1s ease-out 0.2s;
         @include textHoverAnimation;
       }
       &--item-3 {
-        animation: moveInLeft 1s ease-out 0.3s;
+        // animation: moveInLeft 1s ease-out 0.3s;
         @include textHoverAnimation;
       }
       &--item-4 {
-        animation: moveInLeft 1s ease-out 0.4s;
+        // animation: moveInLeft 1s ease-out 0.4s;
         @include textHoverAnimation;
 
         &__disabled {
-          animation: moveInLeft 1s ease-out 0.4s;
+          // animation: moveInLeft 1s ease-out 0.4s;
           color: grey;
         }
       }

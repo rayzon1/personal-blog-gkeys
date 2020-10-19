@@ -28,7 +28,7 @@ export default function BlogMain() {
   // Capture code content as well as p1, p2, etc..
   // Capture paragraph depending on input 'type' param
   const captureTextContent = (text) => {
-    const paragraphRegex = /\[p[0-9]+](.*?)\[\/p[0-9]+]/g;
+    const paragraphRegex = /\[p[0-9]+](.*?)\[\/p[0-9]+]|\[c](.*?)\[\/c]/g;
     return [...text.matchAll(paragraphRegex)];
   };
 
@@ -37,15 +37,14 @@ export default function BlogMain() {
     const description = data.description;
     const code = data.code;
     const matchedContent = captureTextContent(description);
-    // console.log(matchedContent[0][1]);
 
     const replaceCapturedText = (array) => {
       // Take in matched code array - (array of arrays)
-      //! Grab [1] index since it matches para without tags
       let finishedDataOutput;
       try {
         if (array) {
-          finishedDataOutput = array.map((data) => data[2] || data[1]);
+          // finishedDataOutput = array.map((data) => data[2] || data[1]);
+          finishedDataOutput = array.map((data) => data[0]);
         } else {
           throw new Error("Needs array");
         }
@@ -56,25 +55,34 @@ export default function BlogMain() {
       return finishedDataOutput;
     };
 
+    // console.log(matchedContent);
+    // console.log(data);
+
     // TAKES IN ARRAY AND CREATES MAIN BLOG CONTENT COMPONENT
     const DisplayMainBlogContent = ({ data, code }) => {
+      // COMBINED DESCRIPTIONS AND CODE SNIPPETS TO DISPLAY IN MAIN BLOG
       const combinedDescriptionsCode = [];
-      const returnCodeSnippets = (data, i) => {
-        if (data[i] === undefined) {
-          return null;
-        } else {
-          return (
+      const codeSnippets = /\[c](.*?)\[\/c]/g;
+      const paragraphSnippets =  /\[p[0-9]+](.*?)\[\/p[0-9]+]/g;
+
+      let codeCounter = 0;
+
+      // console.log(code);
+      
+      data.map((d, i) => {
+        if(data[i].match(paragraphSnippets)) {
+          combinedDescriptionsCode.push(
+            <p className="blog-preview__description" key={i}>{d}</p>
+          );
+        } else if (data[i].match(codeSnippets)) {
+          combinedDescriptionsCode.push(
             <Highlight language={"javascript"} className="blog-main__code">
-              {data[i]}
+              {code[codeCounter]}
             </Highlight>
           );
+         return codeCounter += 1;
         }
-      };
-      data.map((data, i) => {
-        combinedDescriptionsCode.push(
-          <p className="blog-preview__description">{data}</p>
-        );
-        combinedDescriptionsCode.push(returnCodeSnippets(code, i));
+    
       });
 
       return combinedDescriptionsCode.map((data, index) => <>{data}</>);
