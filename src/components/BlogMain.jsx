@@ -38,13 +38,15 @@ export default function BlogMain() {
     const code = data.code;
     const matchedContent = captureTextContent(description);
 
-    const replaceCapturedText = (array) => {
+    const replaceCapturedText = (array, status) => {
       // Take in matched code array - (array of arrays)
-      let finishedDataOutput;
+      let taggedText;
+      let capturedText;
       try {
         if (array) {
           // finishedDataOutput = array.map((data) => data[2] || data[1]);
-          finishedDataOutput = array.map((data) => data[0]);
+          taggedText = array.map((data) => data[0]);
+          capturedText = array.map((data) => data[1] || data[2]);
         } else {
           throw new Error("Needs array");
         }
@@ -52,7 +54,11 @@ export default function BlogMain() {
         console.log(error);
       }
 
-      return finishedDataOutput;
+      if (status === "tagged") {
+        return taggedText;
+      } else if (status === "text") {
+        return capturedText;
+      }
     };
 
     // console.log(matchedContent);
@@ -63,26 +69,28 @@ export default function BlogMain() {
       // COMBINED DESCRIPTIONS AND CODE SNIPPETS TO DISPLAY IN MAIN BLOG
       const combinedDescriptionsCode = [];
       const codeSnippets = /\[c](.*?)\[\/c]/g;
-      const paragraphSnippets =  /\[p[0-9]+](.*?)\[\/p[0-9]+]/g;
+      const paragraphSnippets = /\[p[0-9]+](.*?)\[\/p[0-9]+]/g;
 
       let codeCounter = 0;
 
-      // console.log(code);
-      
+      console.log(matchedContent);
+
       data.map((d, i) => {
-        if(data[i].match(paragraphSnippets)) {
+        if (d.match(paragraphSnippets)) {
+          console.log(d);
           combinedDescriptionsCode.push(
-            <p className="blog-preview__description" key={i}>{d}</p>
+            <p className="blog-preview__description" key={i}>
+              {replaceCapturedText(matchedContent, "text")[i]}
+            </p>
           );
-        } else if (data[i].match(codeSnippets)) {
+        } else if (d.match(codeSnippets)) {
           combinedDescriptionsCode.push(
             <Highlight language={"javascript"} className="blog-main__code">
               {code[codeCounter]}
             </Highlight>
           );
-         return codeCounter += 1;
+          return (codeCounter += 1);
         }
-    
       });
 
       return combinedDescriptionsCode.map((data, index) => <>{data}</>);
@@ -93,7 +101,7 @@ export default function BlogMain() {
         <h1 className="blog-main__title">{data.title}</h1>
 
         <DisplayMainBlogContent
-          data={replaceCapturedText(matchedContent)}
+          data={replaceCapturedText(matchedContent, "tagged")}
           code={code}
         />
 

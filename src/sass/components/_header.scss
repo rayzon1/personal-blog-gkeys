@@ -16,6 +16,8 @@
     letter-spacing: 1rem;
     font-size: 6rem;
 
+    @include secondaryTextHoverAnimation;
+
     @include respond(tab-land) {
       align-self: auto;
       margin-left: 0;
@@ -29,7 +31,7 @@
   &__sub-header {
     display: flex;
     height: fit-content;
-    margin-bottom: 3rem;
+    margin-bottom: 2.2rem;
     flex-direction: column;
     align-self: flex-end;
 
@@ -43,22 +45,31 @@
       margin-bottom: 1.2rem;
     }
 
+    &--post {
+      font-size: 1.2rem;
+      width: 75%;
+      display: flex;
+      align-self: flex-end;
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+
     &--subtitle {
-        font-size: 1.2rem;
-        letter-spacing: 0.5rem;
-        color: $color-grey-dark-1;
-        font-style: italic; 
-        margin-left: 3rem;
-      }
+      font-size: 1.2rem;
+      letter-spacing: 0.5rem;
+      color: $color-grey-dark-1;
+      font-style: italic;
+      margin-left: 3rem;
+    }
 
     &--sign-out {
-        color: rgba($color-grey-dark-3, .75);
-        cursor: pointer;
-        transition: color .3s;
+      color: rgba($color-grey-dark-3, 0.75);
+      cursor: pointer;
+      transition: color 0.3s;
 
-        &:hover {
-            color: $color-red-light-1;
-        }
+      &:hover {
+        color: $color-red-light-1;
+      }
     }
   }
 }

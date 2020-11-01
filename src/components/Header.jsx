@@ -28,6 +28,14 @@ function Header({ history }) {
         <span className="header__sub-header--subtitle">
           a blog by Gerardo Keys
         </span>
+      
+        {signedIn && (
+          <span className="header__sub-header--post">
+            <span className="header__sub-header--sign-out">Create new post</span>
+            <span className="header__sub-header--sign-out">Create new post</span>
+          </span>
+        )}
+
       </div>
     </div>
   );

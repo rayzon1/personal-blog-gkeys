@@ -29,6 +29,15 @@
   }
 }
 
+@mixin secondaryTextHoverAnimation {
+  transition: all 0.5s;
+  cursor: pointer;
+  &:hover {
+    transform: translateX(2.5) scale(1.5);
+    letter-spacing: 1.7rem;
+  }
+}
+
 @mixin linkReset {
   text-decoration: none;
   color: currentColor;
