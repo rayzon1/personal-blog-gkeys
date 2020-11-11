@@ -33,7 +33,7 @@ function AdminSignIn({ history }) {
     return () => {
       console.log("unmounted");
     };
-  }, [failedSignIn]);
+  }, [failedSignIn, passInput, userInput]);
 
   // SIGN-IN SUBMISSION - Cookie sets admin object to true.
   // Admin object is used by other components to detect sign in.

@@ -4,6 +4,8 @@
   - Layout using FlexBox CSS layout for all pages and sections.
   - Used FlexBox instead of Grid to maintain the simple block style of the site.
 2. **Style**: Styles and animations using CSS as well as react-transition-group.
+3. **Backend**: Node/Express MongoDB server
+4. **Stack**: M.E.R.N
 
 
 

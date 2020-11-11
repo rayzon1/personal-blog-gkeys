@@ -40,11 +40,12 @@ export default function BlogMain() {
 
     const replaceCapturedText = (array, status) => {
       // Take in matched code array - (array of arrays)
+      // captures tagged[p1] texts as well as plain text in 
+      // seperate arrays.
       let taggedText;
       let capturedText;
       try {
         if (array) {
-          // finishedDataOutput = array.map((data) => data[2] || data[1]);
           taggedText = array.map((data) => data[0]);
           capturedText = array.map((data) => data[1] || data[2]);
         } else {
@@ -61,9 +62,6 @@ export default function BlogMain() {
       }
     };
 
-    // console.log(matchedContent);
-    // console.log(data);
-
     // TAKES IN ARRAY AND CREATES MAIN BLOG CONTENT COMPONENT
     const DisplayMainBlogContent = ({ data, code }) => {
       // COMBINED DESCRIPTIONS AND CODE SNIPPETS TO DISPLAY IN MAIN BLOG
@@ -73,11 +71,8 @@ export default function BlogMain() {
 
       let codeCounter = 0;
 
-      console.log(matchedContent);
-
       data.map((d, i) => {
         if (d.match(paragraphSnippets)) {
-          console.log(d);
           combinedDescriptionsCode.push(
             <p className="blog-preview__description" key={i}>
               {replaceCapturedText(matchedContent, "text")[i]}
@@ -85,12 +80,13 @@ export default function BlogMain() {
           );
         } else if (d.match(codeSnippets)) {
           combinedDescriptionsCode.push(
-            <Highlight language={"javascript"} className="blog-main__code">
+            <Highlight language={"javascript"} className="blog-main__code" key={i}>
               {code[codeCounter]}
             </Highlight>
           );
           return (codeCounter += 1);
         }
+        return null;
       });
 
       return combinedDescriptionsCode.map((data, index) => <>{data}</>);

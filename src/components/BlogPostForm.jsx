@@ -15,6 +15,12 @@ export default function BlogPostForm() {
     // Gather all state information
     // Create post submission object/options
     // useFetch hook
+    if (date || title || summary === "") {
+      console.log('please input values...')
+    } else {
+      console.log('submitted...');
+    }
+    
   }
 
   // Input sections for blog post form.
@@ -51,6 +57,7 @@ export default function BlogPostForm() {
         </div>
 
       </form>
+      <button type="submit" onClick={() => submitPost()}>Click Me.</button>
     </div>
   );
 }

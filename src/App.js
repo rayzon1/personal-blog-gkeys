@@ -7,9 +7,9 @@ import BlogMain from "./components/BlogMain";
 import BlogPostForm from "./components/BlogPostForm";
 import AdminSignIn from "./components/AdminSignIn";
 import { setSignIn } from "./redux/signinSlice";
-import { useDispatch } from 'react-redux';
-import Cookies from 'js-cookie';
-import PrivateRoute from './PrivateRoute';
+import { useDispatch } from "react-redux";
+import Cookies from "js-cookie";
+import PrivateRoute from "./PrivateRoute";
 
 // ROUTER RESIDES HERE
 // MAIN APP CONTAINER
@@ -18,30 +18,39 @@ function App() {
 
   useEffect(() => {
     const cookieState = Cookies.getJSON("authenticatedUser");
-    if(cookieState) {
-      return dispatch(setSignIn());
+    if (cookieState) {
+      dispatch(setSignIn());
     }
-  }, [])
+    return () => {
+      console.log("clean up...")
+    }
+  }, [dispatch]);
 
   return (
     <BrowserRouter>
       <Switch>
-        <div className="App">
-          <div className="home">
-            <div className="home__section--1">
-              <Home />
-            </div>
-            <div className="home__section--2">
-              <Header />
-              <div className="home__section--3">
-                <Route exact path="/" render={() => <BlogMain />} />
-                <Route exact path="/signin" render={() => <AdminSignIn />} /> 
-                <PrivateRoute exact path="/blogpost" component={BlogPostForm} /> 
-                <ResourceList />
+        <>
+          <div className="App">
+            <div className="home">
+              <div className="home__section--1">
+                <Home />
+              </div>
+              <div className="home__section--2">
+                <Header />
+                <div className="home__section--3">
+                  <Route exact path="/" render={() => <BlogMain />} />
+                  <Route exact path="/signin" render={() => <AdminSignIn />} />
+                  <PrivateRoute
+                    exact
+                    path="/blogpost"
+                    component={BlogPostForm}
+                  />
+                  <ResourceList />
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </>
       </Switch>
     </BrowserRouter>
   );
